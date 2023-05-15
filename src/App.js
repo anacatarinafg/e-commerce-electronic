@@ -1,35 +1,41 @@
 import { useState, useEffect } from 'react';
 import Navbar from "../src/components/Navbar/Navbar";
 import Categories from './components/Categories/Categories';
+import { getCategories, getProducts } from './fetcher';
 import './App.css';
 
 function App() {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState({ errorMessage: '', data: [] });
+  const [products, setProducts] = useState({ errorMessage: '', data: [] });
 
   useEffect(() => {
-    fetch("http://localhost:3001/categories")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setCategories(data);
-      })
+    const fetchData = async () => {
+      const responseObject = await getCategories();
+      setCategories(responseObject)
+    }
+    fetchData();
   }, []);
 
   const handleCategoryClick = id => {
-    fetch("http://localhost:3001/products?catId=" + id)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setProducts(data);
-    })
+    const fetchData = async () => {
+      const responseObject = await getProducts(id);
+      setProducts(responseObject)
+    }
+    fetchData();
   }
 
   const renderCategories = () => {
-    return categories.map(category =>
+    return categories.data.map(category =>
       <Categories key={category.id} id={category.id} title={category.title} onCategoryClick={() => handleCategoryClick(category.id)} />
     )
   }
+
+  const renderProducts = () => {
+    return products.data.map(product =>
+      <div>{product.title}</div>
+    )
+  }
+
   return (
     <div className="App">
       {/* NAVBAR THAT CONTAINS LOGO, SEARCHBAR & CART */}
@@ -40,9 +46,14 @@ function App() {
       {/* MAIN THAT CONTAINS CATEGORY AND PRODUCTS AND EVERYTHING RELATED TO PRODUCTS */}
       <main>
         <section className='categories__box'>
-          {categories && renderCategories()}
+          {categories.errorMessage && <div>Error: {categories.errorMessage}</div>}
+          {categories.data && renderCategories()}
         </section>
-
+        <section className='products'>
+          <h1 className='products__headline'>Products:</h1>
+          {products.errorMessage && <div>Error: {products.errorMessage}</div>}
+          {products.data && renderProducts()}
+        </section>
       </main>
 
     </div >
