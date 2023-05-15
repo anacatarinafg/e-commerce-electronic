@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+
 import Navbar from "../src/components/Navbar/Navbar";
 import Categories from './components/Categories/Categories';
+import Products from './components/Products/Products';
+
 import { getCategories, getProducts } from './fetcher';
 import './App.css';
 
@@ -32,7 +35,7 @@ function App() {
 
   const renderProducts = () => {
     return products.data.map(product =>
-      <div>{product.title}</div>
+      <Products {...product} />
     )
   }
 
