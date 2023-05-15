@@ -23,8 +23,8 @@ const Products = ({ title, image, specs, features, price }) => {
                     <div className='product__features'>
                         <h3>Features:</h3>
                         <ul className='product__list'>
-                            {features?.map((feature) => {
-                                return <li className='product__item'>{feature}</li>
+                            {features?.map((feature, index) => {
+                                return <li className='product__item' key={`feature${index}`}>{feature}</li>
                             })}
                         </ul>
                     </div>

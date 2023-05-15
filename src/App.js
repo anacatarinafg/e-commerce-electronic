@@ -35,7 +35,7 @@ function App() {
 
   const renderProducts = () => {
     return products.data.map(product =>
-      <Products {...product} />
+      <Products key={product.id} {...product} />
     )
   }
 
