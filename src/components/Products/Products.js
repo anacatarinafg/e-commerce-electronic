@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import {
+    Link,
+    useNavigate
+} from 'react-router-dom';
 import "./products.css"
 
-const Products = ({ title, image, specs, features, price }) => {
+const Products = ({ id, title, image, specs, features, price }) => {
+    const navigate = useNavigate();
     return (
         <article>
             <div className='product__box'>
@@ -10,12 +15,12 @@ const Products = ({ title, image, specs, features, price }) => {
                     <figure>
                         <img src={`./assets/${image}`} alt={title} className='product__image'></img>
                     </figure>
-                    <button className='product__button'>View product</button>
+                    <button className='product__button' onClick={() => navigate(`products/${id}`)}>View product</button>
                     <button className='product__button'>Add to cart</button>
                 </div>
                 <div className='product__right'>
                     {/* Information about the product */}
-                    <h2 className='product__title'>{title}</h2>
+                    <Link to={`products/${id}`}>{title}</Link>
                     <div className='product__dimensions'>
                         <h3>Dimensions:</h3>
                         <p>{specs.dimensions}</p>
