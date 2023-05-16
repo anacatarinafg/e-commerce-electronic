@@ -6,15 +6,18 @@
   flex-direction: column;
   gap: 20px;
 }
-.products .product__box {
+
+.product__box {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.products .product__image {
+
+.product__image {
   width: 300px;
 }
-.products .product__button {
+
+.product__button {
   width: 100px;
   text-align: center;
   padding: 0.5em;

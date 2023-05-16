@@ -6,12 +6,13 @@ import "./productdetail.css";
 const ProductDetail = () => {
     const [product, setProduct] = useState({ errorMessage: '', data: {} });
     const { productId } = useParams();
+    console.log(productId);
 
     useEffect(() => {
         const fetchData = async () => {
             const responseObject = await getProductById(productId);
-            setProduct(responseObject)
-        }
+            setProduct(responseObject);
+        };
         fetchData();
     }, [productId]);
 
@@ -27,7 +28,7 @@ const ProductDetail = () => {
                 </div>
                 <div className='productDetail__down'>
                     {/* Information about the product */}
-                    <span className='productDetail__price'>{product.data.price}€</span>
+                    <span className='productDetail__pr ice'>{product.data.price}€</span>
                     <button className='productDetail__button'>Add to cart</button>
                     <div className='productDetail__dimensions'>
                         <h3>Dimensions:</h3>

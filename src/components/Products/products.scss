@@ -5,26 +5,27 @@
     justify-content: center;
     flex-direction: column;
     gap: 20px;
-
-    .product__box {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .product__image {
-        width: 300px;
-    }
-
-    .product__button {
-        width: 100px;
-        text-align: center;
-        padding: .5em;
-        border: 1px solid #000;
-        border-radius: 15px;
-        margin-right: 15px;
-    }
 }
+
+.product__box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product__image {
+    width: 300px;
+}
+
+.product__button {
+    width: 100px;
+    text-align: center;
+    padding: .5em;
+    border: 1px solid #000;
+    border-radius: 15px;
+    margin-right: 15px;
+}
+
 
 .product__right,
 .product__left {

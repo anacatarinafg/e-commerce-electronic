@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getProducts } from '../../fetcher';
+import Products from '../Products/Products';
 import './categories.css';
 
-const Categories = ({ id, title, onCategoryClick }) => {
+const Categories = () => {
+    const [products, setProducts] = useState({ errorMessage: '', data: [] })
+    const { categoryId } = useParams();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const responseObject = await getProducts(categoryId);
+            setProducts(responseObject);
+        };
+        fetchData();
+    }, [categoryId]);
+
+    const renderProducts = () => {
+        return products.data.map((product) => (
+            <Products key={product.id} {...product} />
+        ));
+    };
+
     return (
         <section>
-            <div key={id} className='categories__menu' onClick={onCategoryClick}>{title}</div>
+            {products.errorMessage && <div>Error: {products.errorMessage}</div>}
+            {products.data && renderProducts()}
         </section>
     )
 }
