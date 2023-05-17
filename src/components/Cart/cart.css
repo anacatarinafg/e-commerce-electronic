@@ -6,7 +6,10 @@
   padding: 20px;
 }
 .cart .cart__button {
-  text-align: end;
+  width: 80px;
+  margin-left: auto;
+  text-align: center;
+  border: 1px solid #000;
 }
 
 .cart__link {
@@ -21,6 +24,10 @@
   -moz-column-gap: 20px;
        column-gap: 20px;
   padding: 10px;
+}
+
+.cart__quantityDiv {
+  display: flex;
 }
 
 .cart__titles {
