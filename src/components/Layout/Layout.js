@@ -30,7 +30,7 @@ const Layout = ({ categories }) => {
                 </section>
             </main>
             <footer>
-                <Link to='/'>Home</Link> | <Link to="/Checkout">Checkout</Link>
+                <Link to='/'>Home</Link> | <Link to="/Cart">Cart</Link>
             </footer>
         </>
 

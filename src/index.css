@@ -16,6 +16,7 @@ body {
 input, 
 button {
   all: unset;
+  cursor: pointer;
 }
 ul {
   list-style: none;
