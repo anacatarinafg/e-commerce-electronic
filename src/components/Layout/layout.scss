@@ -1,0 +1,26 @@
+.categories__box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.categories__list {
+    display: flex;
+
+    .categories__item {
+        font-family: 'Archivo', sans-serif;
+        padding: 2.5em;
+        color: blue;
+
+        /*CHANGE TO INHERIT */
+        .categories__link {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}

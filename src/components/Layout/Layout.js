@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar";
+import './layout.css';
 
 const Layout = ({ categories }) => {
     const renderCategories = () => {
         return categories.data.map((category) => (
-            <li key={category.id}><Link to={`/categories/${category.id}`}>{category.title}</Link></li>
+            <li key={category.id} className="categories__item"><Link to={`/categories/${category.id}`} className='categories__link'>{category.title}</Link></li>
         ));
     };
     return (
@@ -18,7 +19,7 @@ const Layout = ({ categories }) => {
             <main>
                 <section className='categories__box'>
                     {categories.errorMessage && <div>Error: {categories.errorMessage}</div>}
-                    <ul>
+                    <ul className='categories__list'>
                         {categories.data && renderCategories()}
                     </ul>
 
@@ -28,6 +29,9 @@ const Layout = ({ categories }) => {
                     <Outlet />
                 </section>
             </main>
+            <footer>
+                <Link to='/'>Home</Link> | <Link to="/Checkout">Checkout</Link>
+            </footer>
         </>
 
     )

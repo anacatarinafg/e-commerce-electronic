@@ -1,13 +1,1 @@
-.categories__box {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.categories__menu {
-  font-family: "Archivo", sans-serif;
-  padding: 2.5em;
-  color: blue; /*CHANGE TO INHERIT */
-}/*# sourceMappingURL=categories.css.map */
+/*# sourceMappingURL=categories.css.map */
