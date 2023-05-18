@@ -3,47 +3,56 @@ import { CartReducer } from './cartReducer';
 
 export const contextForCart = createContext();
 
-const initialState = { cartItems: [] }
+const initialState = { cartItems: [] };
 
 const CartProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(CartReducer, initialState);
-    const addProduct = payload => {
-        dispatch({ type: 'ADD', payload });
-    }
+  const [state, dispatch] = useReducer(CartReducer, initialState);
 
-    const removeProduct = payload => {
-        dispatch({ type: 'REMOVE', payload });
-    }
+  const addProduct = payload => {
+    dispatch({ type: 'ADD', payload });
+    return state.cartItems;
+  };
 
-    const increaseQuantity = payload => {
-        dispatch({ type: 'INCREASEQTY', payload });
-    }
+  const increaseQuantity = payload => {
+    dispatch({ type: 'INCREASEQTY', payload });
+    return state.cartItems;
+  };
 
-    const decreaseQuantity = payload => {
-        dispatch({ type: 'DECREASEQTY', payload });
-    }
+  const decreaseQuantity = payload => {
+    dispatch({ type: 'DECREASEQTY', payload });
+    return state.cartItems;
+  };
 
-    const clearProducts = () => {
-        dispatch({ type: 'CLEAR', payload: undefined });
-    }
+  const removeProduct = payload => {
+    dispatch({ type: 'REMOVE', payload });
+    return state.cartItems;
+  };
 
-    const getItems = () => {
-        return state.cartItems;
-    }
+  const clearProducts = () => {
+    dispatch({ type: 'CLEAR' });
+    return state.cartItems;
+  };
 
-    const contextValues = {
-        addProduct,
-        removeProduct,
-        increaseQuantity,
-        decreaseQuantity,
-        clearProducts,
-        getItems,
-        ...state
-    }
+  const getItems = () => {
+    return state.cartItems;
 
-    return (
-        <contextForCart.Provider value={contextValues}>{children}</contextForCart.Provider>
-    )
-}
+  };
+
+  const contextValues = {
+    addProduct,
+    removeProduct,
+    increaseQuantity,
+    decreaseQuantity,
+    clearProducts,
+    getItems,
+    ...state,
+  };
+
+  return (
+    <contextForCart.Provider value={contextValues}>
+      {children}
+    </contextForCart.Provider>
+  );
+};
 
 export default CartProvider;

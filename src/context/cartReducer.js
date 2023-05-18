@@ -1,34 +1,38 @@
 export const CartReducer = (state, action) => {
-    debugger;
+  let index = -1;
 
-    let index = -1;
+  if (action.payload) {
+    index = state.cartItems.findIndex((item) => item.id === action.payload.id);
+  }
 
-    if (action.payload)
-        index = state.cartItems.findIndex(x => x.id === action.payload.id);
+  let newItems = [...state.cartItems];
 
-    switch (action.type) {
-        case "ADD":
-        case "INCREASEQTY":
-            if (index === -1) {
-                state.cartItems.push({ ...action.payload, quantity: 1 });
-            } else {
-                state.cartItems[index].quantity++;
-            }
-            break;
-        case "REMOVE":
-            if (index > -1) {
-                state.cartItems.splice(index, 1);
-            }
-            break;
-        case "DECREASEQTY":
-            if (index > -1) {
-                state.cartItems[index].quantity--;
-            }
-            break;
-        case "CLEAR":
-            state.cartItems = [];
-            break;
-        default:
-    }
-    return state;
-}
+  switch (action.type) {
+    case 'ADD':
+    case 'INCREASEQTY':
+      if (index === -1) {
+        newItems.push({ ...action.payload, quantity: 1 });
+      } else {
+        newItems[index] = { ...newItems[index], quantity: newItems[index].quantity + 1 };
+      }
+      break;
+    case 'REMOVE':
+      if (index > -1) {
+        newItems = newItems.filter((item) => item.id !== action.payload.id);
+      }
+      break;
+    case 'DECREASEQTY':
+      if (index > -1) {
+        if (newItems[index].quantity > 1) {
+          newItems[index] = { ...newItems[index], quantity: newItems[index].quantity - 1 };
+        }
+      }
+      break;
+    case 'CLEAR':
+      newItems = [];
+      break;
+    default:
+  }
+
+  return { ...state, cartItems: newItems };
+};

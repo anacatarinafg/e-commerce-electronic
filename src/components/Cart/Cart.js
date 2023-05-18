@@ -1,28 +1,30 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './cart.css';
 import { contextForCart } from '../../context/contextForCart';
 import { UpIcon, HomeIcon, DownIcon, CartIcon, TrashIcon } from "../Icons";
 
 const Cart = () => {
-  const navigate = useNavigate();
   const { getItems, clearProducts, increaseQuantity, decreaseQuantity, removeProduct } = useContext(contextForCart);
+  const [cartItems, setCartItems] = useState([]);
+
+
+  useEffect(() => {
+    setCartItems(getItems());
+  }, [getItems]);
 
   const renderCart = () => {
-    const cartItems = getItems();
-    if (cartItems.length > 0) {
+    if (cartItems && cartItems.length > 0) {
       return cartItems.map((item) => (
         <React.Fragment key={item.id}>
-          <div>
-            <Link to={`/products/${item.id}`} className='cart__link'>{item.title}</Link>
-          </div>
+          <Link to={`/products/${item.id}`} className='cart__link'>{item.title}</Link>
           <div className='cart__quantityDiv'>
             <h4 className='cart__quantity'>{item.quantity}</h4>
-            <UpIcon width={20} onClick={() => increaseQuantity({ id: item.id })} />
-            <DownIcon width={20} onClick={() => decreaseQuantity({ id: item.id })} />
-            <TrashIcon width={20} onClick={() => removeProduct({ id: item.id })} />
+            <UpIcon key={`up-${item.id}`} width={20} onClick={() => increaseQuantity(item)} />
+            <DownIcon key={`down-${item.id}`} width={20} onClick={() => decreaseQuantity(item)} />
+            <TrashIcon key={`trash-${item.id}`} width={20} onClick={() => removeProduct(item)} />
           </div>
-          <h4 className='cart__price'>{item.price}€</h4>
+          <h4 className='cart__price' key={`price-${item.id}`}>{item.price}€</h4>
         </React.Fragment>
       ));
     } else {
@@ -30,12 +32,15 @@ const Cart = () => {
     }
   };
 
-  const renderTotal = () => {
-    const cartItems = getItems();
 
-    const totalPrice = cartItems.reduce((totalPrice, item) => (totalPrice + item.price * item.quantity), 0)
-    return totalPrice;
-  }
+  const renderTotal = () => {
+    const total = cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    return total;
+  };
+
   return (
     <div className='cart'>
       <h3 className='cart__headline'>Shopping cart</h3>
@@ -50,11 +55,11 @@ const Cart = () => {
           {renderCart()}
         </div>
         {/* ADD UNDERLINE */}
-        <button className='cart__button cart__clear' onClick={() => clearProducts()}>Clear</button>
+        <button className='cart__button cart__clear' onClick={clearProducts}>Clear</button>
         <p className='cart__total'>Total: {renderTotal()}€</p>
       </div>
     </div>
   )
 }
 
-export default Cart
+export default Cart;
