@@ -18,9 +18,9 @@ const Cart = () => {
           </div>
           <div className='cart__quantityDiv'>
             <h4 className='cart__quantity'>{item.quantity}</h4>
-            <UpIcon width={20} onClick={() => increaseQuantity({id: item.id}) } />
-            <DownIcon width={20} onClick={() => decreaseQuantity({id: item.id}) } />
-            <TrashIcon width={20} onClick={() => removeProduct({id: item.id}) } />
+            <UpIcon width={20} onClick={() => increaseQuantity({ id: item.id })} />
+            <DownIcon width={20} onClick={() => decreaseQuantity({ id: item.id })} />
+            <TrashIcon width={20} onClick={() => removeProduct({ id: item.id })} />
           </div>
           <h4 className='cart__price'>{item.price}€</h4>
         </React.Fragment>
@@ -29,6 +29,13 @@ const Cart = () => {
       return <h1>The cart is currently empty.</h1>;
     }
   };
+
+  const renderTotal = () => {
+    const cartItems = getItems();
+
+    const totalPrice = cartItems.reduce((totalPrice, item) => (totalPrice + item.price * item.quantity), 0)
+    return totalPrice;
+  }
   return (
     <div className='cart'>
       <h3 className='cart__headline'>Shopping cart</h3>
@@ -45,7 +52,7 @@ const Cart = () => {
         </div>
         {/* ADD UNDERLINE */}
         <button className='cart__button cart__clear' onClick={() => clearProducts()}>Clear</button>
-        <p className='cart__total'>Total: </p>
+        <p className='cart__total'>Total: {renderTotal()}€</p>
       </div>
     </div>
   )

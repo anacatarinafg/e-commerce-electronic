@@ -29,9 +29,6 @@ const Layout = ({ categories }) => {
                     <Outlet />
                 </section>
             </main>
-            <footer>
-                <Link to='/'>Home</Link> | <Link to="/Cart">Cart</Link>
-            </footer>
         </>
 
     )
