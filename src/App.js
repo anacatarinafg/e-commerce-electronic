@@ -11,7 +11,6 @@ import Home from './components/Home/Home';
 import Layout from './components/Layout/Layout';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from "./components/Cart/Cart";
-import Checkout from "./components/Checkout/Checkout";
 import Categories from './components/Categories/Categories';
 
 function App() {
@@ -31,7 +30,6 @@ function App() {
         <Route path="/" element={<Layout categories={categories} />} >
           <Route index element={<Home />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
           <Route
             path="categories/:categoryId"
             element={<Categories />}

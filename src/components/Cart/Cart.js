@@ -39,7 +39,6 @@ const Cart = () => {
   return (
     <div className='cart'>
       <h3 className='cart__headline'>Shopping cart</h3>
-      <button className='cart__button' onClick={() => navigate("/checkout")}>Checkout</button>
       <div className='cart__products'>
         <div className='cart__titles'>
           <h4 className='cart__title'>Item</h4>
