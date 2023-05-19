@@ -3,7 +3,8 @@ import { CartReducer } from './cartReducer';
 
 export const contextForCart = createContext();
 
-const initialState = { cartItems: [] };
+const Storage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+const initialState = { cartItems: Storage };
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
