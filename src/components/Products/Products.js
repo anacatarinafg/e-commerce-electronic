@@ -18,12 +18,15 @@ const Products = ({ id, title, image, specs, features, price }) => {
                     <figure>
                         <img src={`/assets/${image}`} alt={title} className='product__image'></img>
                     </figure>
-                    <button className='product__button' onClick={() => navigate(`/products/${id}`)}>View product</button>
-                    <button className='product__button' onClick={() => addProduct({ id, title, price })}>Add to cart</button>
+                    <div className='product__buttonWrapper'>
+                        <button className='product__button' onClick={() => navigate(`/products/${id}`)}>View product</button>
+                        <button className='product__button' onClick={() => addProduct({ id, title, price })}>Add to cart</button>
+                    </div>
+
                 </div>
                 <div className='product__right'>
                     {/* Information about the product */}
-                    <Link to={`/products/${id}`}>{title}</Link>
+                    <Link to={`/products/${id}`} className='product__link'>{title}</Link>
                     <div className='product__dimensions'>
                         <h3>Dimensions:</h3>
                         <p>{specs.dimensions}</p>
@@ -36,7 +39,7 @@ const Products = ({ id, title, image, specs, features, price }) => {
                             })}
                         </ul>
                     </div>
-                    <span className='product__price'>{price}</span>
+                    <span className='product__price'>{price}€</span>
                 </div>
             </div>
         </article>

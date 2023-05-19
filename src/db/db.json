@@ -71,6 +71,19 @@
         "stock": 10
       },
       {
+        "id": 11,
+        "catId": 2,
+        "title": "ASUS Zenbook 17 Fold OLED'",
+        "productCode": "KTLD60X20",
+        "image": "id2computer",
+        "price": 749,
+        "sku": "287103",
+        "description": "Zenbook 17 Fold OLED leads the world with its amazing 17.3” Foldable OLED (FOLED) touchscreen1 that folds down instantly to a compact 12.5” size, making it smaller than a sheet of photocopier paper for easy carrying. The color-accurate 2.5K slim-bezel NanoEdge Dolby Vision screen is also PANTONE® Validated with TÜV Rheinland-certified low blue-light levels. Its ingenious multiple user modes are limited only by your imagination, and the detachable ASUS ErgoSense Bluetooth® keyboard and touchpad turns it into a powerful fully-featured laptop with a 12th Gen Intel® Core™ processor and a stunning Harman Kardon-certified quad-speaker Dolby Atmos® audio system. The innovative camera system includes a 5 MP AI webcam, a HD IR camera for fast face login, and a color sensor for automatic brightness and color temperature control.",
+        "specs": {"dimensions": "CPU  AMD Ryzen™ 7 4800H", "capacity": "16GB RAM"},
+        "features": ["GeForce RTX™", "GeForce RTX™", "144Hz"],
+        "stock": 10
+      },
+      {
           "id": 6,
           "catId": 3,
           "title": "SAMSUNG UE50TU7020KXXU 50\" Smart 4K Ultra HD HDR LED TV",
