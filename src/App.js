@@ -12,6 +12,7 @@ import Layout from './components/Layout/Layout';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from "./components/Cart/Cart";
 import Categories from './components/Categories/Categories';
+import SearchResults from './components/Navbar/SearchResults';
 
 function App() {
   const [categories, setCategories] = useState({ errorMessage: '', data: [] });
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Layout categories={categories} />} >
           <Route index element={<Home />} />
           <Route path="cart" element={<Cart />} />
+          <Route path='search' element={<SearchResults />} />
           <Route
             path="categories/:categoryId"
             element={<Categories />}
