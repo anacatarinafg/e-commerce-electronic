@@ -12,7 +12,7 @@ function Navbar() {
             if (searchTerm) {
                 navigate("/search?s=" + searchTerm);
             }
-        }, 500);
+        }, 250);
 
         return () => clearTimeout(delay);
     }, [searchTerm, navigate]);

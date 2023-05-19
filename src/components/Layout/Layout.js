@@ -25,7 +25,6 @@ const Layout = ({ categories }) => {
 
                 </section>
                 <section className='products'>
-                    <h1 className='products__headline'>Products:</h1>
                     <Outlet />
                 </section>
             </main>
