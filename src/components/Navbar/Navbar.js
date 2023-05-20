@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineShopping } from "react-icons/ai";
+import image from "./android-chrome-192x192.png";
 import "./navbar.css";
 
 function Navbar() {
@@ -24,7 +25,7 @@ function Navbar() {
     return (
         <header>
             <nav className='navbar'>
-                <Link to='/'><img src="../../../public/assets/android-chrome-192x192.png" alt='ana-catarina-logo' className='navbar__image'></img></Link>
+                <Link to='/' className='navbar__link'><img src={image} alt='ana-catarina-logo' className='navbar__image'></img></Link>
                 <input type="seacrh" placeholder='Search or the product...' name="search" className='navbar__input' onChange={handleChange}></input>
                 <Link to="/Cart"><AiOutlineShopping className='navbar__cartIcon' /></Link>
             </nav>

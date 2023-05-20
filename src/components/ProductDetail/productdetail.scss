@@ -24,14 +24,20 @@
     font-weight: 700;
 }
 
+.productDetail__features,
+.productDetail__dimensions {
+    width: 100%;
+}
 
 .productDetail__up,
 .productDetail__down {
     width: 100%;
-    border: 2px solid;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+}
+.productDetail__description {
+    padding: 0 0 1.5em 0;
 }
