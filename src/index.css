@@ -14,7 +14,9 @@ body {
   margin: auto;
   font-family: "Archivo", sans-serif;
 }
-input, 
+input {
+  all: unset;
+}
 button {
   all: unset;
   cursor: pointer;
